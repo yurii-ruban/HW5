@@ -1,7 +1,6 @@
 #include "algo.h"
 
 /* Service function. Used for selection sort.
-   May be used as a separate part of library.
    Find the index of MAX element in array of integers */
 int findMaxIdx(int* arr, int begin, int end)
 {
@@ -21,7 +20,7 @@ int findMaxIdx(int* arr, int begin, int end)
 }
 
 /* Service function. Used for all of the sorts based on comparation.
-   May be used as a separate part of library. Swaps two integers */
+   Swaps two integers */
 void swap(int& a, int& b)
 {
     const int c = a;
@@ -47,7 +46,7 @@ void selectionSortDescending(int* arr, std::size_t size)
     int start = 0;
     const int end = size;
 
-    for(int i = 0; i < size; ++i)
+    for(int i = start; i < size; ++i)
     {
         int maxIdx = findMaxIdx(arr, start, end);
         swap(arr[maxIdx], arr[start++]);
@@ -63,7 +62,7 @@ void reversePrintNumber(long number)
         return;
     }
 
-    std::cout << number % 10 << " ";
+    std::cout << number % LAST_DIGIT_MANIPULATOR << " ";
 
-    reversePrintNumber(number / 10);
+    reversePrintNumber(number / LAST_DIGIT_MANIPULATOR);
 }
