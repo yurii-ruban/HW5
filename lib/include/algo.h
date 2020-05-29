@@ -4,7 +4,8 @@
 #include <cstdint>
 #include <iostream>
 
-void insertionSort(int* arr, std::size_t size);
+void insertionSortAscending(int* arr, std::size_t size);
+void selectionSortDescending(int* arr, std::size_t size);
 
 void reversePrintNumber(long number);
 

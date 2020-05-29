@@ -1,11 +1,69 @@
 #include "algo.h"
 
-void insertionSort(int* arr, std::size_t size)
+/* Service function. Used for selection sort.
+   May be used as a separate part of library.
+   Find the index of MAX element in array of integers */
+int findMaxIdx(int* arr, int begin, int end)
 {
-    return;
+    int maxIdx = begin;
+    int max = arr[begin];
+
+    for(int i = begin + 1; i < end; ++i)
+    {
+        if(arr[i] > max)
+        {
+            max = arr[i];
+            maxIdx = i;
+        }
+    }
+
+    return maxIdx;
 }
 
+/* Service function. Used for all of the sorts based on comparation.
+   May be used as a separate part of library. Swaps two integers */
+void swap(int& a, int& b)
+{
+    const int c = a;
+    a = b;
+    b = c;
+}
+
+/* Sorts an array of integers in ascend order */
+void insertionSortAscending(int* arr, std::size_t size)
+{
+    for(int i = 0; i < size; ++i)
+    {
+        for(int j = i; arr[j] < arr[j-1] && j > 0; --j)
+        {
+            swap(arr[j], arr[j-1]);
+        }
+    }
+}
+
+/* Sorts an array of integers in descend order */
+void selectionSortDescending(int* arr, std::size_t size)
+{
+    int start = 0;
+    const int end = size;
+
+    for(int i = 0; i < size; ++i)
+    {
+        int maxIdx = findMaxIdx(arr, start, end);
+        swap(arr[maxIdx], arr[start++]);
+    }
+}
+
+/* Prints the number in reverse order 
+   Interprets negative numbers as a set of negative components */ 
 void reversePrintNumber(long number)
 {
-    return;
+    if(!number)
+    {
+        return;
+    }
+
+    std::cout << number % 10 << " ";
+
+    reversePrintNumber(number / 10);
 }
